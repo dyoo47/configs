@@ -1,1 +1,26 @@
-C:/Users/Danny/configs/daniel.omp.json
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "#fff",
+          "style": "plain",
+          "template": " \u26a1 ",
+          "type": "root"
+        },
+        {
+          "foreground": "#ffffff",
+          "style": "plain",
+          "template": "->> ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "console_title_template": "{{ .PWD }}",
+  "final_space": true,
+  "version": 3
+}
