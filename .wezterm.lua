@@ -1,0 +1,1 @@
+C:/Users/Danny/.wezterm.lua
