@@ -19,6 +19,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'sainnhe/everforest'
+Plug 'shortcuts/no-neck-pain.nvim', { 'tag': '*' }
 call plug#end()
 
 colorscheme everforest
@@ -42,6 +43,12 @@ nnoremap <C-M-j> :rightbelow split<CR>
 nnoremap <C-M-k> :leftabove split<CR>
 nnoremap <C-M-l> :rightbelow vsplit<CR>
 
+nnoremap <C-Up>    :resize +2<CR>
+nnoremap <C-Down>  :resize -2<CR>
+nnoremap <C-Left>  :vertical resize -2<CR>
+nnoremap <C-Right> :vertical resize +2<CR>
+nnoremap <leader><C-n> :NoNeckPain<CR>
+
 " LSP
 nnoremap K         <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap gd        <cmd>lua vim.lsp.buf.definition()<CR>
@@ -53,6 +60,15 @@ nnoremap <leader>d <cmd>lua vim.diagnostic.open_float()<CR>
 nnoremap <C-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
 
 lua << EOF
+
+require("no-neck-pain").setup({
+width = 160, 
+autocmds = {
+  skipEnteringNoNeckPainBuffer = false,
+  enableOnVimEnter = true
+},
+})
+
 require('Comment').setup()
 local builtin = require('telescope.builtin')
 vim.keymap.set("n", "<C-_>", function() require('Comment.api').toggle.linewise.current() end, { noremap = true, silent = true })
