@@ -126,20 +126,21 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
     matching = { disallow_symbol_nonprefix_matching = false }
   })
 
-local lspconfig = require('lspconfig')
+-- local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lspconfig.clangd.setup({
-  cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+vim.lsp.config('clangd', {
+  cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
   init_options = {
-    fallbackFlags = { 
-	'-std=c++20',
-	'-Iinclude',
-	},
+    fallbackFlags = {
+      '-std=c++20',
+      '-Iinclude',
+    },
   },
   capabilities = capabilities,
-  root_markers = { '.git', 'build.bat' },
+  root_markers = { '.git' },
 })
+vim.lsp.enable('clangd')
 
 EOF
 " Transparent background
